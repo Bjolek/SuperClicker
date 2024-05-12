@@ -1,0 +1,20 @@
+<MainScreen>
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Рахунок"
+        FloatLayout:
+            Image:
+                id: ball
+                size_hint: 0.3, 0.3
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                source: "ball.webp"
+            Button:
+                size_hint: 0.3, 0.3
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                text: "312"
+                background_color: 1,0,0,0.5
+                on_press: root.click()
+                on_release: root.unclick()
+        Button:
+            text: "123"
