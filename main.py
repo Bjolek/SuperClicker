@@ -13,11 +13,21 @@ class MainScreen(Screen):
         self.ids.ball.size_hint = (0.3 , 0.3)
 
 
+class MenuScreen(Screen):
+    pass
+
+
 class ClickerApp(App):
     def build(self):
         sm = ScreenManager()
-        sm.add_widget(MainScreen(name = "main"))
+        sm.add_widget(MenuScreen(name="menu"))
+        sm.add_widget(MainScreen(name="main"))
         return sm
 
-app = ClickerApp()
-app.run()
+    def switch_to_main_screen(self):
+        self.root.current = "main"
+
+
+if __name__ == "__main__":
+    app = ClickerApp()
+    app.run()
