@@ -2,7 +2,11 @@
     BoxLayout:
         orientation: "vertical"
         Label:
+            id: score_lbl
+            size_hint: 0.3, 0.3
+            pos_hint: {"center_x": 0.5, "center_y": 0.9}
             text: "Рахунок"
+
         FloatLayout:
             Image:
                 id: ball
@@ -16,8 +20,7 @@
                 background_color: 1,0,0,0.5
                 on_press: root.click()
                 on_release: root.unclick()
-        Button:
-            text: "123"
+
 <MenuScreen>:
     BoxLayout:
         orientation: "vertical"
