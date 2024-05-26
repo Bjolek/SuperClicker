@@ -30,6 +30,8 @@ class MainScreen(Screen):
         read_data()
         self.ids.score_lbl.text = "рахунок:" + str(player["score"])
 
+    def switch_to_shop_screen(self):
+        self.manager.current = "Shop"
 
     def click(self):
         self.ids.ball.size_hint = (0.5 , 0.5)
@@ -51,11 +53,24 @@ class ClickerApp(App):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name="menu"))
         sm.add_widget(MainScreen(name="main"))
+        sm.add_widget(ShopScreen(name="Shop"))
+
         return sm
 
     def switch_to_main_screen(self):
         self.root.current = "main"
 
+
+class ShopScreen(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
+    def buy(self, price, power):
+        read_data()
+        if price <= player["score"]:
+            player["score"] -= price
+            player["power"] += power
+            save_data()
 
 if __name__ == "__main__":
     app = ClickerApp()
