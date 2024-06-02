@@ -3,6 +3,10 @@ import json
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+from kivy.core.window import Window
+Window.size = (390,670)
+
+
 player = {
     "score": 0,
     "power": 1
@@ -34,14 +38,14 @@ class MainScreen(Screen):
         self.manager.current = "Shop"
 
     def click(self):
-        self.ids.ball.size_hint = (0.5 , 0.5)
+        self.ids.ball.size_hint = (0.37 , 0.37)
 
         read_data()
         player["score"] += player["power"]
         self.ids.score_lbl.text = "рахунок:" + str(player["score"])
         save_data()
     def unclick(self):
-        self.ids.ball.size_hint = (0.3 , 0.3)
+        self.ids.ball.size_hint = (0.2 , 0.2)
 
 
 class MenuScreen(Screen):
@@ -71,6 +75,10 @@ class ShopScreen(Screen):
             player["score"] -= price
             player["power"] += power
             save_data()
+
+    def go_back_to_main_screen(self):
+        self.manager.current = "main"
+
 
 if __name__ == "__main__":
     app = ClickerApp()

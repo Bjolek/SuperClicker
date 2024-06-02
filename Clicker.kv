@@ -1,28 +1,37 @@
-<MainScreen>
+<MainScreen>:
     BoxLayout:
         orientation: "vertical"
-        Label:
-            id: score_lbl
-            size_hint: 0.3, 0.3
-            pos_hint: {"center_x": 0.5, "center_y": 0.9}
-            text: "Рахунок"
 
         FloatLayout:
             Image:
-                id: ball
-                size_hint: 0.3, 0.3
-                pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                source: "ball.webp"
-            Button:
-                size_hint: 0.3, 0.3
-                pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                text: "312"
-                background_color: 1,0,0,0.5
-                on_press: root.click()
-                on_release: root.unclick()
+                pos_hint: {"center_x": 0.5, "top": 1}
+                allow_stretch: True
+                keep_ratio: False
+                source: "FootballFon.png"
+            FloatLayout:
+                Label:
+                    id: score_lbl
+                    size_hint: 0.3, 0.1  # Изменено для изменения размера надписи
+                    pos_hint: {"center_x": 0.5, "top": 1.22}  # Изменено для размещения сверху
+                    font_size: 24  # Изменено для изменения размера шрифта
+                    text: "Рахунок"
+                Image:
+                    id: ball
+                    size_hint: 0.3, 0.3
+                    pos_hint: {"center_x": 0.5, "top": 0.79}
+                    source: "ball.png"
+
+                Button:
+                    size_hint: 0.3, 0.3
+                    pos_hint: {"center_x": 0.5, "top": 0.75}
+                    text: "312"
+                    background_color: 1, 0, 0, 0.0
+                    on_press: root.click()
+                    on_release: root.unclick()
+
         Button:
             text: "Магазин"
-            size_hint: 1, 0.5
+            size_hint: 1, 0.2
             on_press: root.switch_to_shop_screen()
 
 
@@ -47,6 +56,7 @@
                 size_hint: 1, 0.2
                 Button:
                     text: "Назад"
+                    on_press: root.go_back_to_main_screen()  # Добавлен обработчик событий
                 Label:
                     text: "Рахунок"
             ScrollView:
@@ -77,5 +87,3 @@
                             size_hint: 0.1, 1
                             pos_hint: {'x': 0, 'center_y':0.5}
                             source: 'ball3.png'
-
-
