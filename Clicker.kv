@@ -11,9 +11,9 @@
             FloatLayout:
                 Label:
                     id: score_lbl
-                    size_hint: 0.3, 0.1  # Изменено для изменения размера надписи
-                    pos_hint: {"center_x": 0.5, "top": 1.22}  # Изменено для размещения сверху
-                    font_size: 24  # Изменено для изменения размера шрифта
+                    size_hint: 0.3, 0.1
+                    pos_hint: {"center_x": 0.5, "top": 1.22}
+                    font_size: 24
                     text: "Рахунок"
                 Image:
                     id: ball
@@ -24,24 +24,41 @@
                 Button:
                     size_hint: 0.3, 0.3
                     pos_hint: {"center_x": 0.5, "top": 0.75}
-                    text: "312"
-                    background_color: 1, 0, 0, 0.0
+                    text: ""
+                    background_normal: ""
+                    background_down: ""
+                    background_color: 1, 1, 1, 0
                     on_press: root.click()
                     on_release: root.unclick()
 
         Button:
             text: "Магазин"
             size_hint: 1, 0.2
+            font_size: 24
+            background_normal: ""
+            background_down: ""
+            background_color: (0.5, 0.5, 0.5, 1)
+            color: (1, 1, 1, 1)
             on_press: root.switch_to_shop_screen()
 
+        BoxLayout:
+            id: items_box
+            size_hint: None, None
+            size: self.minimum_size
+            pos_hint: {"right": 1, "y": 0}
+            orientation: "horizontal"
 
 <MenuScreen>:
     BoxLayout:
         orientation: "vertical"
         Button:
             text: "Грати"
+            font_size: 32
+            background_normal: ""
+            background_down: ""
+            background_color: (0, 0.5, 0, 1)
+            color: (1, 1, 1, 1)
             on_press: app.switch_to_main_screen()
-
 
 <ShopScreen>:
     FloatLayout:
@@ -56,9 +73,15 @@
                 size_hint: 1, 0.2
                 Button:
                     text: "Назад"
-                    on_press: root.go_back_to_main_screen()  # Добавлен обработчик событий
+                    font_size: 24
+                    background_normal: ""
+                    background_down: ""
+                    background_color: (0.5, 0.5, 0.5, 1)
+                    color: (1, 1, 1, 1)
+                    on_press: root.go_back_to_main_screen()
                 Label:
                     text: "Рахунок"
+                    font_size: 24
             ScrollView:
                 size_hint_y: None
                 size_hint: 1, 1
@@ -72,7 +95,12 @@
                         Button:
                             size_hint: 1, 1
                             pos_hint: {'center_x': 0.5, 'center_y':0.5}
-                            on_press: root.buy(100,100)
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0, 0.5, 0, 1)
+                            color: (1, 1, 1, 1)
+                            text: "Buy Power +100 (Price: 100)"
+                            on_press: root.buy(100, 100, 'ball2.png')
                         Image:
                             size_hint: 0.1, 1
                             pos_hint: {'x': 0, 'center_y':0.5}
@@ -81,8 +109,40 @@
                         Button:
                             size_hint: 1, 1
                             pos_hint: {'center_x': 0.5, 'center_y':0.5}
-                            on_press: root.buy(200,200)
-
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0, 0.5, 0, 1)
+                            color: (1, 1, 1, 1)
+                            text: "Buy Power +200 (Price: 200)"
+                            on_press: root.buy(200, 200, 'ball3.png')
+                        Image:
+                            size_hint: 0.1, 1
+                            pos_hint: {'x': 0, 'center_y':0.5}
+                            source: 'ball3.png'
+                    FloatLayout:
+                        Button:
+                            size_hint: 1, 1
+                            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.5, 0, 0, 1)
+                            color: (1, 1, 1, 1)
+                            text: "Sell Power +100 (Price: 50)"
+                            on_press: root.sell(50, 100, 'ball2.png')
+                        Image:
+                            size_hint: 0.1, 1
+                            pos_hint: {'x': 0, 'center_y':0.5}
+                            source: 'ball2.png'
+                    FloatLayout:
+                        Button:
+                            size_hint: 1, 1
+                            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.5, 0, 0, 1)
+                            color: (1, 1, 1, 1)
+                            text: "Sell Power +200 (Price: 100)"
+                            on_press: root.sell(100, 200, 'ball3.png')
                         Image:
                             size_hint: 0.1, 1
                             pos_hint: {'x': 0, 'center_y':0.5}
